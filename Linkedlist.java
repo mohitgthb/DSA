@@ -8,23 +8,44 @@ class Node {
     }
 }
 
-// class Solution {
+ class Solution {
 
-// }
+    Node head;
+    
+    public void InsertAtFront(int val){
+        Node newNode = new Node(val);
+        newNode.next = head;
+        head = newNode;
+    }
+
+    public void InsertAtEnd(int val){
+        Node newNode = new Node(val);
+        Node curr = head;
+        while(curr.next != null){
+            curr = curr.next;
+        }
+        curr.next = newNode;
+    }
+
+    public void printList(){
+        Node curr = head;
+        while(curr != null){
+            System.out.print(curr.val + "->");
+            curr = curr.next;
+        }
+    }
+ }
 
 public class Linkedlist {
     public static void main(String[] args){
-        int arr[] = {2, 5, 6, 9};
 
-        Node n = new Node(arr[0]);
+        Solution s = new Solution();
 
-        System.out.print(n.val + "->");
-
-        for(int i=1; i<=3; i++){
-            n.next = new Node(arr[i]);
-            n = n.next;
-            System.out.print(n.val + "->");
-        }
-
+        s.InsertAtFront(1);
+        s.InsertAtFront(2);
+        s.InsertAtFront(3);
+        s.InsertAtEnd(0);
+        s.InsertAtEnd(5);
+        s.printList();
     }
 }
