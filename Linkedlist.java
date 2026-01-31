@@ -27,6 +27,18 @@ class Node {
         curr.next = newNode;
     }
 
+    public boolean search(int key) {
+        Node curr = head;
+        while(curr != null){
+            if(curr.val == key){
+                System.out.println(true);
+                return true;
+            }
+            curr = curr.next;
+        }
+        return false;
+    }
+
     public void printList(){
         Node curr = head;
         while(curr != null){
@@ -46,6 +58,7 @@ public class Linkedlist {
         s.InsertAtFront(3);
         s.InsertAtEnd(0);
         s.InsertAtEnd(5);
+        s.search(4);
         s.printList();
     }
 }
