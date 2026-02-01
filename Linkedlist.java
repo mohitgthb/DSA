@@ -81,6 +81,19 @@ class Solution {
         }
     }
 
+    public void reverseList(){
+        Node prev = null;
+        Node curr = head;
+
+        while(curr != null){
+            Node next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+    }
+
     public void printList(){
         Node curr = head;
         while(curr != null){
@@ -104,6 +117,8 @@ public class Linkedlist {
         s.deleteNode(0);
         //s.search(4);
         s.InsertAtPosition(3, 9);
+        s.printList();
+        s.reverseList();
         s.printList();
     }
 }
