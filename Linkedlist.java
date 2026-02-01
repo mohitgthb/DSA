@@ -94,6 +94,17 @@ class Solution {
         head = prev;
     }
 
+    public Node middleOfList(){
+        Node slow = head;
+        Node fast = head;
+
+        while( fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
     public void printList(){
         Node curr = head;
         while(curr != null){
@@ -118,7 +129,8 @@ public class Linkedlist {
         //s.search(4);
         s.InsertAtPosition(3, 9);
         s.printList();
-        s.reverseList();
-        s.printList();
+        System.out.println(s.middleOfList());
+        // s.reverseList();
+        // s.printList();
     }
 }
