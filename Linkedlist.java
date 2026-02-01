@@ -1,4 +1,3 @@
-
 class Solution {
 
     private Node head;
@@ -94,6 +93,38 @@ class Solution {
         head = prev;
     }
 
+    public void reverseInKgroups(int k) {
+        head = reverseInKgroupsInternal(head, k);
+    }
+
+    private Node reverseInKgroupsInternal(Node head, int k){
+        Node curr = head;
+        int count = 0;
+
+        while(curr != null && count < k){
+            curr = curr.next;
+            count++;
+        }
+        if(count < k) return head;
+
+        Node prev = null, next = null;
+        curr = head;
+        count = 0;
+
+        while(curr != null && count<k){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+            count++;
+        }
+
+        if(next != null){
+            head.next = reverseInKgroupsInternal(next, k);
+        }
+        return prev;
+    }
+
     public Node middleOfList(){
         Node slow = head;
         Node fast = head;
@@ -103,6 +134,21 @@ class Solution {
             fast = fast.next.next;
         }
         return slow;
+    }
+
+    public boolean hasCycle(){
+        Node slow = head;
+        Node fast = head;
+
+        while(fast !=null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if(slow == fast){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void printList(){
@@ -129,8 +175,9 @@ public class Linkedlist {
         //s.search(4);
         s.InsertAtPosition(3, 9);
         s.printList();
-        System.out.println(s.middleOfList());
+        s.reverseInKgroups( 2);
+        // System.out.println(s.middleOfList());
         // s.reverseList();
-        // s.printList();
+        s.printList();
     }
 }
