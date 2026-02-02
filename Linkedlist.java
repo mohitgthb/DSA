@@ -2,23 +2,26 @@ class Solution {
 
     private Node head;
 
+    //Node class
     private static class Node {
         private int val;
         private Node next;
-
+        
+        //Initializing Node
         private Node(int val) {
             this.val = val;
             this.next = null;
         }
     }
 
-    
+    //Insert at front function
     public void InsertAtFront(int val){
         Node newNode = new Node(val);
         newNode.next = head;
         head = newNode;
     }
 
+    //Insert at last function
     public void InsertAtEnd(int val){
         Node newNode = new Node(val);
         if(head == null){
@@ -32,6 +35,7 @@ class Solution {
         curr.next = newNode;
     }
 
+    //Insert at particular position function
     public void InsertAtPosition(int pos, int val){
         if(pos == 0){
             InsertAtFront(val);
@@ -51,6 +55,7 @@ class Solution {
         
     }
 
+    //Search in linked list 
     public boolean search(int key) {
         Node curr = head;
         while(curr != null){
@@ -63,6 +68,7 @@ class Solution {
         return false;
     }
 
+    //Delete Node 
     public void deleteNode(int val){
         if(head == null) return;
 
@@ -80,6 +86,7 @@ class Solution {
         }
     }
 
+    //Reverse Linked list
     public void reverseList(){
         Node prev = null;
         Node curr = head;
@@ -93,6 +100,7 @@ class Solution {
         head = prev;
     }
 
+    //Reverse in k groups
     public void reverseInKgroups(int k) {
         head = reverseInKgroupsInternal(head, k);
     }
@@ -125,6 +133,7 @@ class Solution {
         return prev;
     }
 
+    //finding middle of the linked list
     public Node middleOfList(){
         Node slow = head;
         Node fast = head;
@@ -136,6 +145,7 @@ class Solution {
         return slow;
     }
 
+    //checking linked list has cycle or not 
     public boolean hasCycle(){
         Node slow = head;
         Node fast = head;
@@ -151,6 +161,7 @@ class Solution {
         return false;
     }
 
+    //Printing linked list
     public void printList(){
         Node curr = head;
         while(curr != null){
