@@ -56,6 +56,9 @@ class Solution {
         }
     }
 
+    public void ReverseDLL() {
+        
+    }
     
 
     public void printList() {
