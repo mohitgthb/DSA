@@ -46,6 +46,53 @@ class StackArray {
 
 }
 
+class Node{
+
+    int val;
+    Node next;
+
+    Node(int val){
+        this.val = val;
+        next = null;
+    }
+}
+
+class StackList {
+
+    Node top;
+
+    void push(int val){
+
+        Node newNode = new Node(val);
+        newNode.next = top;
+        top = newNode;
+    }
+
+    int pop(){
+
+        if(top == null){
+            System.out.println("Stack underflow");
+            return -1;
+        }
+        int val = top.val;
+        top = top.next;
+        return val;
+    }
+
+    int peek(){
+
+        if(top == null){
+            System.out.println("stack underflow");
+            return -1;
+        }
+        return top.val;
+    }
+
+    boolean isEmpty(){
+        return top == null;
+    }
+}
+
 public class StackOperations {
     public static void main(String[] args){
 
@@ -62,8 +109,11 @@ public class StackOperations {
         // System.out.println(stack.peek());
 
         StackArray arr = new StackArray(5);
+        StackList ll = new StackList();
 
         arr.push(1);
         arr.peek();
+
+        ll.push(1);
     }
 }
