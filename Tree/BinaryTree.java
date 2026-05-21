@@ -106,6 +106,46 @@ public class BinaryTree {
         }
     }
 
+    public void levelOrder(Node root){
+        if(root == null) return;
+
+        Queue<Node> q = new LinkedList<>();
+        q.offer(root);
+
+        while(!q.isEmpty()){
+            Node node = q.poll();
+
+            System.out.print(node.val + " ");
+
+            if(node.left != null){
+                q.offer(node.left);
+            }
+
+            if(node.right != null){
+                q.offer(node.right);
+            }
+        }
+    }
+
+    int diameter = 0;
+
+    public int height(Node root){
+        if(root == null) return 0;
+
+        int left = height(root.left);
+        int right = height(root.right);
+
+        diameter = Math.max(diameter, left + right);
+
+        return 1 + Math.max(left, right);
+    }
+
+    public int diameterOfBT(Node root){
+        height(root);
+        return diameter;
+    }
+
+
     public static void main(String[] args){
         BinaryTree tree = new BinaryTree();
 
