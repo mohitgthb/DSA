@@ -44,6 +44,50 @@ class BST {
         return null;
     }
 
+    public Node insertREC(Node root, int val){
+
+        if(root == null){
+            return new Node(val);
+        }
+
+        if(val < root.val){
+            root.left = insertREC(root.left, val);
+        } else {
+            root.right = insertREC(root.right, val);
+        }
+
+        return root;
+    }
+
+    public Node insert(Node root, int val){
+
+        Node newNode = new Node(val);
+
+        if(root == null){
+            return newNode;
+        }
+        
+        Node curr = root;
+        while(true){
+
+            if(val < curr.val){
+
+                if(curr.left == null){
+                    curr.left = newNode;
+                    break;
+                }
+                curr = curr.left;
+            } else {
+
+                if(curr.right == null){
+                    curr.right = newNode;
+                    break;
+                }
+                curr = curr.right;
+            }
+        }
+        return root;
+    }
 
     public static void main(String[] args){
         BST obj = new BST();
@@ -52,5 +96,7 @@ class BST {
 
         obj.searchREC(root, 0);
         obj.search(root, 0);
+        obj.insertREC(root, 1);
+        obj.insert(root, 1);
     }
 }
