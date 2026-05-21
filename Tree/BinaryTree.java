@@ -36,11 +36,33 @@ public class BinaryTree {
         }
     }
 
+    public void inorder(Node root){
+        if(root == null) return;
+
+        Stack<Node> st = new Stack<>();
+
+        Node curr = root;
+        while(curr != null || !st.isEmpty()){
+
+            while(curr!=null){
+                st.push(curr);
+                curr = curr.left;
+            }
+
+            curr = st.pop();
+            System.out.print(curr.val + " ");
+
+            curr = curr.right;
+
+        }
+    }
+
     public static void main(String[] args){
         BinaryTree tree = new BinaryTree();
 
         Node root = new Node(1);
 
         tree.preorder(root);
+        tree.inorder(root);
     }
 }
